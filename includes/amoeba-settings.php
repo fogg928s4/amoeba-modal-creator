@@ -16,15 +16,24 @@ class Amoeba_Settings {
     public function __construct() {
         add_action( 'admin_menu', array( $this, 'add_admin_menu' ) );
         add_action( 'admin_init', array( $this, 'handle_save' ) );
+        add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_media_scripts' ) );
+    }
+
+
+    public function enqueue_media_scripts( $hook ) {
+        // Only load on our specific settings page
+        if ( 'admin_page_amoeba-settings' !== $hook ) {
+            return;
+        }
+        wp_enqueue_media();
     }
 
     /**
      * Adds a hidden/submenu page for editing.
      */
     public function add_admin_menu() {
-        // This page is reached via the Dashboard Edit button or "Add New"
         add_submenu_page(
-            null, // Hidden from menu, handled by Dashboard or specific links
+            null,
             __( 'Edit Modal', 'custom-modal-creator' ),
             __( 'Edit Modal', 'custom-modal-creator' ),
             'manage_options',
@@ -33,9 +42,6 @@ class Amoeba_Settings {
         );
     }
 
-    /**
-     * Handles the POST request to save modal data.
-     */
     public function handle_save() {
         if ( ! isset( $_POST['amoeba_save_modal'] ) || ! check_admin_referer( 'amoeba_save_modal_action' ) ) {
             return;
@@ -66,9 +72,6 @@ class Amoeba_Settings {
         exit;
     }
 
-    /**
-     * Renders the editor page.
-     */
     public function render_settings_page() {
         global $wpdb;
         $id = isset( $_GET['id'] ) ? intval( $_GET['id'] ) : 0;
@@ -108,7 +111,10 @@ class Amoeba_Settings {
                     </tr>
                     <tr>
                         <th scope="row"><label for="picture_url"><?php _e( 'Picture URL', 'custom-modal-creator' ); ?></label></th>
-                        <td><input name="picture_url" type="text" id="picture_url" value="<?php echo esc_attr( $picture_url ); ?>" class="regular-text"></td>
+                        <td>
+                            <input name="picture_url" type="text" id="picture_url" value="<?php echo esc_attr( $picture_url ); ?>" class="regular-text">
+                            <button type="button" class="button" id="amoeba_upload_btn"><?php _e( 'Select Image', 'custom-modal-creator' ); ?></button>
+                        </td>
                     </tr>
                     <tr>
                         <th scope="row"><label for="hex_color"><?php _e( 'Hex Color', 'custom-modal-creator' ); ?></label></th>
@@ -116,7 +122,7 @@ class Amoeba_Settings {
                     </tr>
                     <tr>
                         <th scope="row"><label for="custom_css"><?php _e( 'Custom CSS', 'custom-modal-creator' ); ?></label></th>
-                        <td><textarea name="custom_css" id="custom_css" rows="5" cols="50" class="large-text"><?php echo esc_textarea( $custom_css ); ?></textarea></td>
+                        <td><textarea name="custom_css" id="custom_css" rows="15" class="large-text"><?php echo esc_textarea( $custom_css ); ?></textarea></td>
                     </tr>
                     <?php if ( $id > 0 ) : ?>
                     <tr>
@@ -132,6 +138,35 @@ class Amoeba_Settings {
                 </p>
             </form>
         </div>
+
+        <script type="text/javascript">
+            jQuery(document).ready(function($){
+                $('#amoeba_upload_btn').click(function(e) {
+                    e.preventDefault();
+                    var image = wp.media({ 
+                        title: '<?php _e( "Select or Upload Image", "custom-modal-creator" ); ?>',
+                        multiple: false
+                    }).open()
+                    .on('select', function(e){
+                        var uploaded_image = image.state().get('selection').first();
+                        var image_url = uploaded_image.toJSON().url;
+                        $('#picture_url').val(image_url);
+                    });
+                });
+            });
+
+            const cssTextarea = document.getElementById('custom_css');
+            if (cssTextarea) {
+                var cssMode = cssTextarea.getAttribute('data-mode') || "css";
+                cssEditor = CodeMirror.fromTextArea(cssTextarea, {
+                    mode: cssMode,
+                    lineNumbers: true,
+                    theme: "default",
+                    gutters: ["CodeMirror-linenumbers"],
+                    autoCloseTags: true,
+                });
+            }
+        </script>
         <?php
     }
 }
