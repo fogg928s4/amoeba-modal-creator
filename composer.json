@@ -1,0 +1,17 @@
+{
+    "name": "fogg928s4/amoeba-modal-creator",
+    "description": "A plugin to create modals for your WordPress site",
+    "type": "wordpress-plugin",
+    "license": "MIT",
+    "authors": [
+      {
+        "name": "José Melgares",
+        "email": "roberto.melgares@ct.uneatlantico.es"
+      }
+    ],
+    "config": {
+      "allow-plugins": {
+        "composer/installers": true
+      }
+    }
+}
