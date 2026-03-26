@@ -120,10 +120,6 @@ class Amoeba_Settings {
                         <th scope="row"><label for="hex_color"><?php _e( 'Hex Color', 'custom-modal-creator' ); ?></label></th>
                         <td><input name="hex_color" type="text" id="hex_color" value="<?php echo esc_attr( $hex_color ); ?>" class="regular-text" placeholder="#ffffff"></td>
                     </tr>
-                    <tr>
-                        <th scope="row"><label for="custom_css"><?php _e( 'Custom CSS', 'custom-modal-creator' ); ?></label></th>
-                        <td><textarea name="custom_css" id="custom_css" rows="15" class="large-text"><?php echo esc_textarea( $custom_css ); ?></textarea></td>
-                    </tr>
                     <?php if ( $id > 0 ) : ?>
                     <tr>
                         <th scope="row"><?php _e( 'Shortcode', 'custom-modal-creator' ); ?></th>
