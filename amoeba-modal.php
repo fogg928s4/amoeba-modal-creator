@@ -3,7 +3,7 @@
 /**
  * Plugin Name: Amoeba - Custom Modal Creator
  * Description: Easily create modals for your WordPress site plugin.
- * Version: 1.3.0
+ * Version: 1.5.9
  * Author: Jose Melgares
  * Text Domain: custom-modal-creator
  */
@@ -12,11 +12,12 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-define('AMOEBA_MODAL_VERSION', '1.0.0' );
+define('AMOEBA_MODAL_VERSION', '1.5.9' );
 define('AMOEBA_MODAL_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define('AMOEBA_DB_VERSION', '1.0.0' );
 
 // Include required files
+require_once AMOEBA_MODAL_PLUGIN_DIR . 'scripts/amoeba-scripts.php';
 require_once AMOEBA_MODAL_PLUGIN_DIR . 'includes/amoeba-dashboard.php';
 require_once AMOEBA_MODAL_PLUGIN_DIR . 'includes/amoeba-settings.php';
 require_once AMOEBA_MODAL_PLUGIN_DIR . 'includes/amoeba-shortcode.php';
@@ -48,12 +49,20 @@ function amoeba_install() {
     add_option( 'amoeba_db_version', AMOEBA_DB_VERSION );
 }
 
-/**
- * Check for database updates.
- */
+
+add_action( 'plugins_loaded', 'amoeba_update_db_check' );
 function amoeba_update_db_check() {
     if ( get_option( 'amoeba_db_version' ) != AMOEBA_DB_VERSION ) {
         amoeba_install();
     }
 }
-add_action( 'plugins_loaded', 'amoeba_update_db_check' );
+
+add_action( 'plugins_loaded', 'amoeba_init_plugin');
+function amoeba_init_plugin() {
+    if( is_admin() ) {
+        new Amoeba_Dashboard();
+        new Amoeba_Settings();
+    }
+    new Amoeba_Scripts();
+    //     new Amoeba_Shortcode();
+}

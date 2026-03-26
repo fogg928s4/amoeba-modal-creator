@@ -108,5 +108,3 @@ class Amoeba_Dashboard {
         <?php
     }
 }
-
-new Amoeba_Dashboard();

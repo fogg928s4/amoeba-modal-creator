@@ -21,7 +21,10 @@ class Amoeba_Scripts
 
         // Enqueue CodeMirror from CDN
         wp_enqueue_style('codemirror-css', 'https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/codemirror.min.css');
+        wp_enqueue_script('codemirror-js', 'https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/codemirror.min.js', [], null, true);
+        wp_enqueue_script('codemirror-html', 'https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/mode/htmlmixed/htmlmixed.min.js', ['codemirror-js'], null, true);
         wp_enqueue_script('codemirror-css-mode', 'https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/mode/css/css.min.js', ['codemirror-js'], null, true);
+        wp_enqueue_script('codemirror-js-mode', 'https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/mode/javascript/javascript.min.js', ['codemirror-js'], null, true);
 
         // Load Prettier for formatting
         wp_enqueue_script('prettier', 'https://cdn.jsdelivr.net/npm/prettier@2.8.8/standalone.js', [], null, true);
@@ -41,3 +44,5 @@ class Amoeba_Scripts
 
     }
 }
+
+new Amoeba_Scripts();

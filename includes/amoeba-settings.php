@@ -170,5 +170,3 @@ class Amoeba_Settings {
         <?php
     }
 }
-
-new Amoeba_Settings();
