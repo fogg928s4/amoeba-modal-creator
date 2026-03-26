@@ -10,9 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Amoeba_Dashboard {
 
-    /**
-     * Amoeba_Dashboard constructor.
-     */
+
     public function __construct() {
         add_action( 'admin_menu', array( $this, 'add_admin_menu' ) );
     }
@@ -28,11 +26,10 @@ class Amoeba_Dashboard {
             'manage_options',
             'amoeba-modals',
             array( $this, 'render_dashboard_page' ),
-            'dashicons-format-image',
+            'dashicons-carrot', // Carrot
             60
         );
 
-        // Submenu: All Modals (duplicate of main for clarity)
         add_submenu_page(
             'amoeba-modals',
             __( 'All Modals', 'custom-modal-creator' ),
@@ -42,7 +39,6 @@ class Amoeba_Dashboard {
             array( $this, 'render_dashboard_page' )
         );
 
-        // Submenu: Add New
         add_submenu_page(
             'amoeba-modals',
             __( 'Add New Modal', 'custom-modal-creator' ),
@@ -53,9 +49,6 @@ class Amoeba_Dashboard {
         );
     }
 
-    /**
-     * Renders the dashboard page with the table of modals.
-     */
     public function render_dashboard_page() {
         global $wpdb;
         $table_name = $wpdb->prefix . 'amoeba_modals';
