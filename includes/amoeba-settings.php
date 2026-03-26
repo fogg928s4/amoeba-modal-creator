@@ -141,32 +141,52 @@ class Amoeba_Settings {
 
         <script type="text/javascript">
             jQuery(document).ready(function($){
-                $('#amoeba_upload_btn').click(function(e) {
+                var file_frame;
+                $('#amoeba_upload_btn').on('click', function(e) {
                     e.preventDefault();
-                    var image = wp.media({ 
+
+                    // If the media frame already exists, reopen it.
+                    if ( file_frame ) {
+                        file_frame.open();
+                        return;
+                    }
+
+                    // Create the media frame.
+                    file_frame = wp.media.frames.file_frame = wp.media({
                         title: '<?php _e( "Select or Upload Image", "custom-modal-creator" ); ?>',
+                        button: {
+                            text: '<?php _e( "Use this image", "custom-modal-creator" ); ?>',
+                        },
                         multiple: false
-                    }).open()
-                    .on('select', function(e){
-                        var uploaded_image = image.state().get('selection').first();
-                        var image_url = uploaded_image.toJSON().url;
-                        $('#picture_url').val(image_url);
                     });
+
+                    // When an image is selected, run a callback.
+                    file_frame.on('select', function() {
+                        var attachment = file_frame.state().get('selection').first().toJSON();
+                        $('#picture_url').val(attachment.url);
+                    });
+
+                    // Finally, open the modal
+                    file_frame.open();
                 });
             });
-
             const cssTextarea = document.getElementById('custom_css');
             if (cssTextarea) {
-                var cssMode = cssTextarea.getAttribute('data-mode') || "css";
-                cssEditor = CodeMirror.fromTextArea(cssTextarea, {
-                    mode: cssMode,
+                const cssEditor = CodeMirror.fromTextArea(cssTextarea, {
+                    mode: "css",
                     lineNumbers: true,
                     theme: "default",
                     gutters: ["CodeMirror-linenumbers"],
                     autoCloseTags: true,
                 });
+                
+                // Ensure CodeMirror updates the original textarea on form submit
+                jQuery('form').on('submit', function() {
+                    cssEditor.save();
+                });
             }
         </script>
+
         <?php
     }
 }

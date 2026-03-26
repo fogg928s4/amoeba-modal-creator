@@ -12,13 +12,19 @@ class Amoeba_Scripts
         add_action('wp_enqueue_scripts', array($this, 'enqueue_frontend_assets'));
     }
 
-    public function enqueue_admin_assets($hook)
-    {
-        // Load assets only on the plugin page (adjust hook as needed)
-        if (false === strpos($hook, 'webforms-agent-ldd-forms')) {
+    public function enqueue_admin_assets($hook)    {
+        // Load assets only on our plugin pages
+        ?>
+
+        <script>
+            console.log('Admin assets loaded for hook: <?php echo $hook; ?>');
+        </script>
+
+        <?php
+
+        if( strpos($hook, 'amoeba-settings') === false && strpos($hook, 'amoeba-dashboard') === false ) {
             return;
         }
-
         // Enqueue CodeMirror from CDN
         wp_enqueue_style('codemirror-css', 'https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/codemirror.min.css');
         wp_enqueue_script('codemirror-js', 'https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/codemirror.min.js', [], null, true);
@@ -27,14 +33,31 @@ class Amoeba_Scripts
         wp_enqueue_script('codemirror-js-mode', 'https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/mode/javascript/javascript.min.js', ['codemirror-js'], null, true);
 
         // Load Prettier for formatting
+
+        ?>
+        <script>
+            console.log("bbbbbbbbbbbbbbbbbbbbbbbbbb");
+        </script>
+        <?php
+        // Load Prettier for formatting
         wp_enqueue_script('prettier', 'https://cdn.jsdelivr.net/npm/prettier@2.8.8/standalone.js', [], null, true);
         wp_enqueue_script('prettier-html', 'https://cdn.jsdelivr.net/npm/prettier@2.8.8/parser-html.js', ['prettier'], null, true);
-
+        ?>
+        <script>
+            console.log("cccccccccccccc");
+        </script>
+        <?php
         wp_enqueue_style('toastify-css', 'https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css', array(), null);
 
 
         // Enqueue Admin Scripts & Styles
         wp_enqueue_style('amoeba-admin-css', AMOEBA_MODAL_PLUGIN_DIR . 'assets/admin.css', array(), '1.0.0');
+
+        ?>
+        <script>
+            console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+        </script>
+        <?php
     }
 
     public function enqueue_frontend_assets()
