@@ -1,0 +1,13 @@
+.CodeMirror {
+    border: 1px solid #ccd0d4; /* Match WordPress editor border */
+    border-radius: 4px;
+    font-family: monospace;
+    background-color: #ffffff; /* White background */
+    margin-right: 16px;
+    height: 600px;
+}
+
+.CodeMirror-gutters {
+    margin-right: 10px;  /* Increase the spacing as desired */
+}
+
