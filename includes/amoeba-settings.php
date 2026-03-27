@@ -34,8 +34,8 @@ class Amoeba_Settings {
     public function add_admin_menu() {
         add_submenu_page(
             null,
-            __( 'Edit Modal', 'custom-modal-creator' ),
-            __( 'Edit Modal', 'custom-modal-creator' ),
+            __( 'Edit Modal', 'amoeba-modal-creator' ),
+            __( 'Edit Modal', 'amoeba-modal-creator' ),
             'manage_options',
             'amoeba-settings',
             array( $this, 'render_settings_page' )
@@ -90,10 +90,10 @@ class Amoeba_Settings {
 
         ?>
         <div class="wrap">
-            <h1><?php echo $id > 0 ? __( 'Edit Modal', 'custom-modal-creator' ) : __( 'Add New Modal', 'custom-modal-creator' ); ?></h1>
+            <h1><?php echo $id > 0 ? __( 'Edit Modal', 'amoeba-modal-creator' ) : __( 'Add New Modal', 'amoeba-modal-creator' ); ?></h1>
             
             <?php if ( isset( $_GET['message'] ) ) : ?>
-                <div class="updated"><p><?php echo $_GET['message'] === 'updated' ? __( 'Modal updated.', 'custom-modal-creator' ) : __( 'Modal created.', 'custom-modal-creator' ); ?></p></div>
+                <div class="updated"><p><?php echo $_GET['message'] === 'updated' ? __( 'Modal updated.', 'amoeba-modal-creator' ) : __( 'Modal created.', 'amoeba-modal-creator' ); ?></p></div>
             <?php endif; ?>
 
             <form method="post" action="">
@@ -102,35 +102,35 @@ class Amoeba_Settings {
                 
                 <table class="form-table">
                     <tr>
-                        <th scope="row"><label for="title"><?php _e( 'Title', 'custom-modal-creator' ); ?></label></th>
+                        <th scope="row"><label for="title"><?php _e( 'Title', 'amoeba-modal-creator' ); ?></label></th>
                         <td><input name="title" type="text" id="title" value="<?php echo esc_attr( $title ); ?>" class="regular-text" required></td>
                     </tr>
                     <tr>
-                        <th scope="row"><label for="content"><?php _e( 'Content', 'custom-modal-creator' ); ?></label></th>
+                        <th scope="row"><label for="content"><?php _e( 'Content', 'amoeba-modal-creator' ); ?></label></th>
                         <td><textarea name="content" id="content" rows="10" cols="50" class="large-text"><?php echo esc_textarea( $content ); ?></textarea></td>
                     </tr>
                     <tr>
-                        <th scope="row"><label for="picture_url"><?php _e( 'Picture URL', 'custom-modal-creator' ); ?></label></th>
+                        <th scope="row"><label for="picture_url"><?php _e( 'Picture URL', 'amoeba-modal-creator' ); ?></label></th>
                         <td>
                             <input name="picture_url" type="text" id="picture_url" value="<?php echo esc_attr( $picture_url ); ?>" class="regular-text">
-                            <button type="button" class="button" id="amoeba_upload_btn"><?php _e( 'Select Image', 'custom-modal-creator' ); ?></button>
+                            <button type="button" class="button" id="amoeba_upload_btn"><?php _e( 'Select Image', 'amoeba-modal-creator' ); ?></button>
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row"><label for="hex_color"><?php _e( 'Hex Color', 'custom-modal-creator' ); ?></label></th>
+                        <th scope="row"><label for="hex_color"><?php _e( 'Hex Color', 'amoeba-modal-creator' ); ?></label></th>
                         <td><input name="hex_color" type="text" id="hex_color" value="<?php echo esc_attr( $hex_color ); ?>" class="regular-text" placeholder="#ffffff"></td>
                     </tr>
                     <?php if ( $id > 0 ) : ?>
                     <tr>
-                        <th scope="row"><?php _e( 'Shortcode', 'custom-modal-creator' ); ?></th>
+                        <th scope="row"><?php _e( 'Shortcode', 'amoeba-modal-creator' ); ?></th>
                         <td><code>[amoeba_modal id="<?php echo esc_attr( $id ); ?>"]</code></td>
                     </tr>
                     <?php endif; ?>
                 </table>
 
                 <p class="submit">
-                    <input type="submit" name="amoeba_save_modal" id="submit" class="button button-primary" value="<?php _e( 'Save Modal', 'custom-modal-creator' ); ?>">
-                    <a href="<?php echo admin_url( 'admin.php?page=amoeba-modals' ); ?>" class="button"><?php _e( 'Back to List', 'custom-modal-creator' ); ?></a>
+                    <input type="submit" name="amoeba_save_modal" id="submit" class="button button-primary" value="<?php _e( 'Save Modal', 'amoeba-modal-creator' ); ?>">
+                    <a href="<?php echo admin_url( 'admin.php?page=amoeba-modals' ); ?>" class="button"><?php _e( 'Back to List', 'amoeba-modal-creator' ); ?></a>
                 </p>
             </form>
         </div>
@@ -149,9 +149,9 @@ class Amoeba_Settings {
 
                     // Create the media frame.
                     file_frame = wp.media.frames.file_frame = wp.media({
-                        title: '<?php _e( "Select or Upload Image", "custom-modal-creator" ); ?>',
+                        title: '<?php _e( "Select or Upload Image", "amoeba-modal-creator" ); ?>',
                         button: {
-                            text: '<?php _e( "Use this image", "custom-modal-creator" ); ?>',
+                            text: '<?php _e( "Use this image", "amoeba-modal-creator" ); ?>',
                         },
                         multiple: false
                     });

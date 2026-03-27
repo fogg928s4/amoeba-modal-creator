@@ -55,6 +55,10 @@ class Amoeba_Shortcode {
                 </div>
             <?php endif; ?>
             <h3 class="amoeba-trigger-title"><?php echo esc_html( $modal->title ); ?></h3>
+            <div class="view-cv">
+                <p><span class="dashicons dashicons-media-document"></span>
+                    <?php _e( 'View CV', 'amoeba-modal-creator' ); ?></p>
+            </div>
         </div>
 
         <!-- Modal Overlay -->
