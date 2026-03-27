@@ -3,16 +3,16 @@
 /**
  * Plugin Name: Amoeba - Custom Modal Creator
  * Description: Easily create modals for your WordPress site plugin.
- * Version: 2.1.3
- * Author: Jose Melgares
- * Text Domain: custom-modal-creator
+ * Version: 3.0.3 (CVs)
+ * Author: José Melgares
+ * Text Domain: amoeba-modal-creator
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-define('AMOEBA_MODAL_VERSION', '2.1.3' );
+define('AMOEBA_MODAL_VERSION', '3.0.3' );
 define('AMOEBA_MODAL_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define('AMOEBA_MODAL_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define('AMOEBA_DB_VERSION', '1.0.0' );
