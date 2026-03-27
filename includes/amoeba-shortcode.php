@@ -76,5 +76,3 @@ class Amoeba_Shortcode {
         return ob_get_clean();
     }
 }
-
-new Amoeba_Shortcode();

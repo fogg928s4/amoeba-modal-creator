@@ -13,7 +13,6 @@ class Amoeba_Scripts
     }
 
     public function enqueue_admin_assets($hook)    {
-        // Load assets only on our plugin pages
         ?>
 
         <script>

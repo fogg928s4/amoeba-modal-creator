@@ -27,7 +27,6 @@ class Amoeba_Dashboard {
             'amoeba-modals',
             array( $this, 'render_dashboard_page' ),
             'dashicons-carrot', // Carrot
-            60
         );
 
         add_submenu_page(
