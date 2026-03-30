@@ -44,9 +44,9 @@ class Amoeba_Scripts
     public function enqueue_frontend_assets()
     {
         // Enqueue your frontend CSS for the plugin.
-        wp_enqueue_style('amoeba-frontend-css', plugins_url('assets/css/trigger.css', dirname( __FILE__ ) ), array(), '1.0.2');
-        wp_enqueue_style('amoeba-frontend-css', plugins_url('assets/css/overlay.css', dirname( __FILE__ ) ), array(), '1.0.2');
-        wp_enqueue_style('amoeba-frontend-css', plugins_url('assets/css/cv-specifics.css', dirname( __FILE__ ) ), array(), '1.0.2');
+        wp_enqueue_style('amoeba-trigger-css', plugins_url('assets/css/trigger.css', dirname( __FILE__ ) ), array(), '1.0.4');
+        wp_enqueue_style('amoeba-overlay-css', plugins_url('assets/css/overlay.css', dirname( __FILE__ ) ), array(), '1.0.4');
+        wp_enqueue_style('amoeba-cv-specifics-css', plugins_url('assets/css/cv-specifics.css', dirname( __FILE__ ) ), array(), '1.0.2');
         //wp_enqueue_style('amoeba-frontend-css', plugins_url( 'assets/cv-modals.css', dirname( __FILE__ ) ), array(), '1.0.0');
         wp_enqueue_script('amoeba-frontend-js', plugins_url('assets/js/frontend.js', dirname( __FILE__ ) ), array(), '1.0.4', true);
     }
