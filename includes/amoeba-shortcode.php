@@ -67,14 +67,18 @@ class Amoeba_Shortcode {
         <div id="<?php echo esc_attr( $unique_id ); ?>-overlay" class="amoeba-modal-overlay">
             <div class="amoeba-modal-content">
                 <span class="amoeba-modal-close">&times;</span>
-                <h2 class="amoeba-modal-title"><?php echo esc_html( $modal->title ); ?></h2>
-                <?php if ( $modal->picture_url ) : ?>
-                    <div class="amoeba-modal-image">
-                        <img src="<?php echo esc_url( $modal->picture_url ); ?>" alt="<?php echo esc_attr( $modal->title ); ?>">
+                <div class="amoeba-modal-flex-container">
+                    <?php if ( $modal->picture_url ) : ?>
+                        <div class="amoeba-modal-image">
+                            <img src="<?php echo esc_url( $modal->picture_url ); ?>" alt="<?php echo esc_attr( $modal->title ); ?>">
+                        </div>
+                    <?php endif; ?>
+                    <div class="amoeba-modal-text-content">
+                        <h2 class="amoeba-modal-title"><?php echo esc_html( $modal->title ); ?></h2>
+                        <div class="amoeba-modal-body">
+                            <?php echo do_shortcode( wpautop( $modal->content ) ); ?>
+                        </div>
                     </div>
-                <?php endif; ?>
-                <div class="amoeba-modal-body">
-                    <?php echo wpautop( wp_kses_post( $modal->content ) ); ?>
                 </div>
             </div>
         </div>
