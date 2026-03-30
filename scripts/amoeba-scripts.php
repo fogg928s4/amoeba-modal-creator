@@ -44,7 +44,7 @@ class Amoeba_Scripts
     public function enqueue_frontend_assets()
     {
         // Enqueue your frontend CSS for the plugin.
-        wp_enqueue_style('amoeba-frontend-css', plugins_url( 'assets/amoeba-modal-styles.css', dirname( __FILE__ ) ), array(), '2.1.5');
+        wp_enqueue_style('amoeba-frontend-css', plugins_url( 'assets/amoeba-modal-styles.css', dirname( __FILE__ ) ), array(), '2.4.0');
         //wp_enqueue_style('amoeba-frontend-css', plugins_url( 'assets/cv-modals.css', dirname( __FILE__ ) ), array(), '1.0.0');
         wp_enqueue_script('amoeba-frontend-js', plugins_url( 'assets/frontend.js', dirname( __FILE__ ) ), array(), '1.0.4', true);
     }
