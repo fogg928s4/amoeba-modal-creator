@@ -106,8 +106,8 @@ class Amoeba_Settings {
                         <td><input name="title" type="text" id="title" value="<?php echo esc_attr( $title ); ?>" class="regular-text" required></td>
                     </tr>
                     <tr>
-                        <th scope="row"><label for="content"><?php _e( 'Content', 'amoeba-modal-creator' ); ?></label></th>
-                        <td><textarea name="content" id="content" rows="10" cols="50" class="large-text"><?php echo esc_textarea( $content ); ?></textarea></td>
+                        <th scope="row"><label for="content"><?php _e( 'Content (HTML)', 'amoeba-modal-creator' ); ?></label></th>
+                        <td><textarea name="content" id="content" rows="15" cols="50" class="large-text"><?php echo esc_textarea( $content ); ?></textarea></td>
                     </tr>
                     <tr>
                         <th scope="row"><label for="picture_url"><?php _e( 'Picture URL', 'amoeba-modal-creator' ); ?></label></th>
@@ -119,6 +119,10 @@ class Amoeba_Settings {
                     <tr>
                         <th scope="row"><label for="hex_color"><?php _e( 'Hex Color', 'amoeba-modal-creator' ); ?></label></th>
                         <td><input name="hex_color" type="text" id="hex_color" value="<?php echo esc_attr( $hex_color ); ?>" class="regular-text" placeholder="#ffffff"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><label for="custom_css"><?php _e( 'Custom CSS', 'amoeba-modal-creator' ); ?></label></th>
+                        <td><textarea name="custom_css" id="custom_css" rows="10" cols="50" class="large-text"><?php echo esc_textarea( $custom_css ); ?></textarea></td>
                     </tr>
                     <?php if ( $id > 0 ) : ?>
                     <tr>
@@ -165,22 +169,39 @@ class Amoeba_Settings {
                     // Finally, open the modal
                     file_frame.open();
                 });
-            });
-            const cssTextarea = document.getElementById('custom_css');
-            if (cssTextarea) {
-                const cssEditor = CodeMirror.fromTextArea(cssTextarea, {
-                    mode: "css",
-                    lineNumbers: true,
-                    theme: "default",
-                    gutters: ["CodeMirror-linenumbers"],
-                    autoCloseTags: true,
-                });
-                
-                // Ensure CodeMirror updates the original textarea on form submit
+
+                // Initialize CodeMirror for Content (HTML)
+                const contentTextarea = document.getElementById('content');
+                let contentEditor;
+                if (contentTextarea) {
+                    contentEditor = CodeMirror.fromTextArea(contentTextarea, {
+                        mode: "htmlmixed",
+                        lineNumbers: true,
+                        theme: "default",
+                        autoCloseTags: true,
+                        lineWrapping: true
+                    });
+                }
+
+                // Initialize CodeMirror for Custom CSS
+                const cssTextarea = document.getElementById('custom_css');
+                let cssEditor;
+                if (cssTextarea) {
+                    cssEditor = CodeMirror.fromTextArea(cssTextarea, {
+                        mode: "css",
+                        lineNumbers: true,
+                        theme: "default",
+                        autoCloseTags: true,
+                        lineWrapping: true
+                    });
+                }
+
+                // Ensure CodeMirror updates the original textareas on form submit
                 jQuery('form').on('submit', function() {
-                    cssEditor.save();
+                    if (contentEditor) contentEditor.save();
+                    if (cssEditor) cssEditor.save();
                 });
-            }
+            });
         </script>
 
         <?php
