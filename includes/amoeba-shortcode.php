@@ -41,21 +41,23 @@ class Amoeba_Shortcode {
         ob_start();
         ?>
         <style>
-            #<?php echo esc_attr( $unique_id ); ?>.amoeba-modal-trigger {
+            #<?php echo esc_attr( $unique_id ); ?>.amoeba-modal-card {
                 border-color: <?php echo esc_attr( $modal->hex_color ); ?>;
             }
             <?php echo $modal->custom_css; // Custom CSS from DB ?>
         </style>
 
-        <!-- Trigger Box -->
-        <div id="<?php echo esc_attr( $unique_id ); ?>" class="amoeba-modal-trigger" data-modal-target="<?php echo esc_attr( $unique_id ); ?>-overlay">
+        <!-- Container Box -->
+        <div id="<?php echo esc_attr( $unique_id ); ?>" class="amoeba-modal-card">
             <?php if ( $modal->picture_url ) : ?>
                 <div class="amoeba-trigger-image">
                     <img src="<?php echo esc_url( $modal->picture_url ); ?>" alt="<?php echo esc_attr( $modal->title ); ?>">
                 </div>
             <?php endif; ?>
             <h3 class="amoeba-trigger-title"><?php echo esc_html( $modal->title ); ?></h3>
-            <div class="view-cv">
+            
+            <!-- Actual Trigger Box -->
+            <div class="view-cv amoeba-modal-trigger" data-modal-target="<?php echo esc_attr( $unique_id ); ?>-overlay">
                 <p><span class="dashicons dashicons-media-document"></span>
                     <?php _e( 'View CV', 'amoeba-modal-creator' ); ?></p>
             </div>
@@ -80,3 +82,5 @@ class Amoeba_Shortcode {
         return ob_get_clean();
     }
 }
+
+new Amoeba_Shortcode();
