@@ -1,0 +1,32 @@
+/* Trigger Box Styles */
+.amoeba-modal-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+    max-width: 300px;
+    text-align: center;
+}
+
+.amoeba-modal-trigger {
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.amoeba-modal-trigger:hover {
+    transform: scale(1.05);
+}
+
+.amoeba-trigger-image img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.amoeba-trigger-title {
+    font-size: 1.25rem;
+}
