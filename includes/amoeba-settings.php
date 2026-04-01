@@ -55,8 +55,9 @@ class Amoeba_Settings {
             'title'       => sanitize_text_field( $_POST['title'] ),
             'content'     => wp_kses_post( $_POST['content'] ),
             'picture_url' => esc_url_raw( $_POST['picture_url'] ),
-            'hex_color'   => sanitize_hex_color( $_POST['hex_color'] ),
             'custom_css'  => wp_strip_all_tags( $_POST['custom_css'] ),
+            'linkedin'    => esc_url_raw( $_POST['linkedin'] ),
+            'twitter'     => esc_url_raw( $_POST['twitter'] ),
         );
 
         if ( $id > 0 ) {
@@ -85,7 +86,6 @@ class Amoeba_Settings {
         $title = $modal ? $modal->title : '';
         $content = $modal ? $modal->content : '';
         $picture_url = $modal ? $modal->picture_url : '';
-        $hex_color = $modal ? $modal->hex_color : '#333333';
         $custom_css = $modal ? $modal->custom_css : '';
 
         ?>
@@ -115,10 +115,6 @@ class Amoeba_Settings {
                             <input name="picture_url" type="text" id="picture_url" value="<?php echo esc_attr( $picture_url ); ?>" class="regular-text">
                             <button type="button" class="button" id="amoeba_upload_btn"><?php _e( 'Select Image', 'amoeba-modal-creator' ); ?></button>
                         </td>
-                    </tr>
-                    <tr>
-                        <th scope="row"><label for="hex_color"><?php _e( 'Hex Color', 'amoeba-modal-creator' ); ?></label></th>
-                        <td><input name="hex_color" type="text" id="hex_color" value="<?php echo esc_attr( $hex_color ); ?>" class="regular-text" placeholder="#ffffff"></td>
                     </tr>
                     <tr>
                         <th scope="row"><label for="custom_css"><?php _e( 'Custom CSS', 'amoeba-modal-creator' ); ?></label></th>

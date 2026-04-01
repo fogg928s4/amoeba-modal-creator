@@ -74,7 +74,6 @@ class Amoeba_Dashboard {
                         <th scope="col" class="column-id" style="width: 50px;"><?php _e( 'ID', 'amoeba-modal-creator' ); ?></th>
                         <th scope="col"><?php _e( 'Title', 'amoeba-modal-creator' ); ?></th>
                         <th scope="col"><?php _e( 'Shortcode', 'amoeba-modal-creator' ); ?></th>
-                        <th scope="col"><?php _e( 'Color', 'amoeba-modal-creator' ); ?></th>
                         <th scope="col"><?php _e( 'Actions', 'amoeba-modal-creator' ); ?></th>
                     </tr>
                 </thead>
@@ -86,10 +85,6 @@ class Amoeba_Dashboard {
                                 tube
                                 <td><strong><a href="<?php echo admin_url( 'admin.php?page=amoeba-settings&id=' . $modal->id ); ?>"><?php echo esc_html( $modal->title ); ?></a></strong></td>
                                 <td><code>[amoeba_modal id="<?php echo esc_html( $modal->id ); ?>"]</code></td>
-                                <td>
-                                    <span style="display:inline-block; width: 20px; height: 20px; background: <?php echo esc_attr( $modal->hex_color ); ?>; border: 1px solid #ccc; vertical-align: middle; margin-right: 5px;"></span>
-                                    <?php echo esc_html( $modal->hex_color ); ?>
-                                </td>
                                 <td>
                                     <a href="<?php echo admin_url( 'admin.php?page=amoeba-settings&id=' . $modal->id ); ?>" class="button button-small"><?php _e( 'Edit', 'amoeba-modal-creator' ); ?></a>
                                     <a href="<?php echo wp_nonce_url( admin_url( 'admin.php?page=amoeba-modals&action=delete&id=' . $modal->id ), 'delete_modal_' . $modal->id ); ?>" class="button button-small button-link-delete" onclick="return confirm('<?php _e( 'Are you sure?', 'amoeba-modal-creator' ); ?>')"><?php _e( 'Delete', 'amoeba-modal-creator' ); ?></a>
