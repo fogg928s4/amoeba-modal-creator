@@ -90,8 +90,6 @@ class Amoeba_Settings {
         $linkedin = $modal ? $modal->linkedin : '';
         $twitter = $modal ? $modal->twitter : '';
         ?>
-
-        ?>
         <div class="wrap">
             <h1><?php echo $id > 0 ? __( 'Edit Modal', 'amoeba-modal-creator' ) : __( 'Add New Modal', 'amoeba-modal-creator' ); ?></h1>
             
@@ -124,12 +122,17 @@ class Amoeba_Settings {
                         <td><input name="twitter" type="text" id="twitter" value="<?php echo esc_attr( $twitter ); ?>" class="regular-text"></td>
                     </tr>
                     <tr>
-                        <th scope="row"><label for="content"><?php _e( 'Content (HTML)', 'amoeba-modal-creator' ); ?></label></th>
-                        <td><textarea name="content" id="content" rows="15" cols="50" class="large-text"><?php echo esc_textarea( $content ); ?></textarea></td>
-                    </tr>
-                    <tr>
-                        <th scope="row"><label for="custom_css"><?php _e( 'Custom CSS', 'amoeba-modal-creator' ); ?></label></th>
-                        <td><textarea name="custom_css" id="custom_css" rows="10" cols="50" class="large-text"><?php echo esc_textarea( $custom_css ); ?></textarea></td>
+                        <th scope="row">Content</th>
+                        <td class="content-editor-container">
+                            <div class="html-editor-section">
+                                <label for="content"> <?php _e( 'Content (HTML)', 'amoeba-modal-creator' ); ?> </label>
+                                <textarea name="content" id="content" rows="15" cols="50" class="large-text"> <?php echo esc_textarea( $content ); ?> </textarea>
+                            </div>
+                            <div class="css-editor-section">
+                                <label for="custom_css"> <?php _e( 'Custom CSS', 'amoeba-modal-creator' ); ?> </label>
+                                <textarea name="custom_css" id="custom_css" rows="10" cols="50" class="large-text"> <?php echo esc_textarea( $custom_css ); ?> </textarea>
+                            </div>
+                        </td>
                     </tr>
                     <?php if ( $id > 0 ) : ?>
                     <tr>

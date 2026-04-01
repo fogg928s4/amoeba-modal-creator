@@ -87,8 +87,9 @@ class Amoeba_Shortcode {
                             <?php if ( $modal->twitter ) : ?>
                                 <a href="<?php echo esc_url( $modal->twitter ); ?>" target="_blank"><i class="bi bi-twitter-x"></i></a>
                             <?php endif; ?>
+                        </div>   
                     <?php endif; ?>
-                        </div>
+
                 </div>
             </div>
         </div>

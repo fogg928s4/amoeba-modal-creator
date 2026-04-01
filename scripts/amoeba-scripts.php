@@ -37,7 +37,7 @@ class Amoeba_Scripts
         wp_enqueue_style('toastify-css', 'https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css', array(), null);
 
         // Enqueue Admin Scripts & Styles
-        wp_enqueue_style('amoeba-admin-css', AMOEBA_MODAL_PLUGIN_DIR . 'assets/css/admin.css', array(), '1.0.3');
+        wp_enqueue_style('amoeba-admin-css',  plugins_url('assets/css/admin.css', dirname( __FILE__ ) ), array(), '1.0.0');
 
     }
 
@@ -46,7 +46,7 @@ class Amoeba_Scripts
         // Enqueue your frontend CSS for the plugin.
         wp_enqueue_style('amoeba-trigger-css', plugins_url('assets/css/trigger.css', dirname( __FILE__ ) ), array(), '1.0.4');
         wp_enqueue_style('amoeba-overlay-css', plugins_url('assets/css/overlay.css', dirname( __FILE__ ) ), array(), '1.0.4');
-        wp_enqueue_style('amoeba-cv-specifics-css', plugins_url('assets/css/cv-specifics.css', dirname( __FILE__ ) ), array(), '2.0.0');
+        wp_enqueue_style('amoeba-cv-specifics-css', plugins_url('assets/css/cv-specifics.css', dirname( __FILE__ ) ), array(), '2.0.1');
         //wp_enqueue_style('amoeba-frontend-css', plugins_url( 'assets/cv-modals.css', dirname( __FILE__ ) ), array(), '1.0.0');
         wp_enqueue_script('amoeba-frontend-js', plugins_url('assets/js/frontend.js', dirname( __FILE__ ) ), array(), '1.0.4', true);
     }
