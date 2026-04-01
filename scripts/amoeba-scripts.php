@@ -37,7 +37,7 @@ class Amoeba_Scripts
         wp_enqueue_style('toastify-css', 'https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css', array(), null);
 
         // Enqueue Admin Scripts & Styles
-        wp_enqueue_style('amoeba-admin-css',  plugins_url('assets/css/admin.css', dirname( __FILE__ ) ), array(), '1.0.0');
+        wp_enqueue_style('amoeba-admin-css',  plugins_url('assets/css/admin.css', dirname( __FILE__ ) ), array(), '1.0.2');
 
     }
 

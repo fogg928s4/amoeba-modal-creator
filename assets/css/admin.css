@@ -18,8 +18,8 @@
 }
 
 .content-editor-container .html-editor-section {
-    flex: 1;
+    flex: 2;
 }
 .content-editor-container .css-editor-section {
-    flex: 2;
+    flex: 1;
 }
