@@ -66,29 +66,35 @@ class Amoeba_Shortcode {
         <!-- Modal Overlay -->
         <div id="<?php echo esc_attr( $unique_id ); ?>-overlay" class="amoeba-modal-overlay">
             <div class="amoeba-modal-content">
+                <!-- Close Button -->
                 <span class="amoeba-modal-close">&times;</span>
+                <!-- Title and Socials-->
+                <div class="amoeba-modal-flex-container">
+                    
+                    <div class="amoeba-modal-text-content">
+                        <h2 class="amoeba-modal-title"><?php echo esc_html( $modal->title ); ?></h2>
+                        <?php if ( $modal->linkedin || $modal->twitter ) : ?>
+                            <div class="amoeba-modal-socials">
+                                <?php if ( $modal->linkedin ) : ?>
+                                    <a href="<?php echo esc_url( $modal->linkedin ); ?>" target="_blank"><i class="bi bi-linkedin"></i></a>
+                                <?php endif; ?>
+                                <?php if ( $modal->twitter ) : ?>
+                                    <a href="<?php echo esc_url( $modal->twitter ); ?>" target="_blank"><i class="bi bi-twitter-x"></i></a>
+                                <?php endif; ?>
+                            </div>   
+                        <?php endif; ?>
+                        
+                    </div>
+                </div>
                 <div class="amoeba-modal-flex-container">
                     <?php if ( $modal->picture_url ) : ?>
                         <div class="amoeba-modal-image">
                             <img src="<?php echo esc_url( $modal->picture_url ); ?>" alt="<?php echo esc_attr( $modal->title ); ?>">
                         </div>
                     <?php endif; ?>
-                    <div class="amoeba-modal-text-content">
-                        <h2 class="amoeba-modal-title"><?php echo esc_html( $modal->title ); ?></h2>
-                        <div class="amoeba-modal-body">
+                    <div class="amoeba-modal-body">
                             <?php echo do_shortcode( wpautop( $modal->content ) ); ?>
-                        </div>
                     </div>
-                    <?php if ( $modal->linkedin || $modal->twitter ) : ?>
-                        <div class="amoeba-modal-socials">
-                            <?php if ( $modal->linkedin ) : ?>
-                                <a href="<?php echo esc_url( $modal->linkedin ); ?>" target="_blank"><i class="bi bi-linkedin"></i></a>
-                            <?php endif; ?>
-                            <?php if ( $modal->twitter ) : ?>
-                                <a href="<?php echo esc_url( $modal->twitter ); ?>" target="_blank"><i class="bi bi-twitter-x"></i></a>
-                            <?php endif; ?>
-                        </div>   
-                    <?php endif; ?>
 
                 </div>
             </div>
