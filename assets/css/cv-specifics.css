@@ -21,3 +21,23 @@
 .view-cv p {
     margin: 0;
 }
+
+.amoeba-modal-socials {
+        display: flex;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+}
+
+.amoeba-modal-socials  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background-color: #459DD0;
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+}

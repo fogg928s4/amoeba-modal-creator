@@ -87,6 +87,9 @@ class Amoeba_Settings {
         $content = $modal ? $modal->content : '';
         $picture_url = $modal ? $modal->picture_url : '';
         $custom_css = $modal ? $modal->custom_css : '';
+        $linkedin = $modal ? $modal->linkedin : '';
+        $twitter = $modal ? $modal->twitter : '';
+        ?>
 
         ?>
         <div class="wrap">
@@ -106,15 +109,23 @@ class Amoeba_Settings {
                         <td><input name="title" type="text" id="title" value="<?php echo esc_attr( $title ); ?>" class="regular-text" required></td>
                     </tr>
                     <tr>
-                        <th scope="row"><label for="content"><?php _e( 'Content (HTML)', 'amoeba-modal-creator' ); ?></label></th>
-                        <td><textarea name="content" id="content" rows="15" cols="50" class="large-text"><?php echo esc_textarea( $content ); ?></textarea></td>
-                    </tr>
-                    <tr>
                         <th scope="row"><label for="picture_url"><?php _e( 'Picture URL', 'amoeba-modal-creator' ); ?></label></th>
                         <td>
                             <input name="picture_url" type="text" id="picture_url" value="<?php echo esc_attr( $picture_url ); ?>" class="regular-text">
                             <button type="button" class="button" id="amoeba_upload_btn"><?php _e( 'Select Image', 'amoeba-modal-creator' ); ?></button>
                         </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><label for="linkedin"><?php _e( 'LinkedIn URL', 'amoeba-modal-creator' ); ?></label></th>
+                        <td><input name="linkedin" type="text" id="linkedin" value="<?php echo esc_attr( $linkedin ); ?>" class="regular-text"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><label for="twitter"><?php _e( 'Twitter URL', 'amoeba-modal-creator' ); ?></label></th>
+                        <td><input name="twitter" type="text" id="twitter" value="<?php echo esc_attr( $twitter ); ?>" class="regular-text"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><label for="content"><?php _e( 'Content (HTML)', 'amoeba-modal-creator' ); ?></label></th>
+                        <td><textarea name="content" id="content" rows="15" cols="50" class="large-text"><?php echo esc_textarea( $content ); ?></textarea></td>
                     </tr>
                     <tr>
                         <th scope="row"><label for="custom_css"><?php _e( 'Custom CSS', 'amoeba-modal-creator' ); ?></label></th>

@@ -79,6 +79,16 @@ class Amoeba_Shortcode {
                             <?php echo do_shortcode( wpautop( $modal->content ) ); ?>
                         </div>
                     </div>
+                    <?php if ( $modal->linkedin || $modal->twitter ) : ?>
+                        <div class="amoeba-modal-socials">
+                            <?php if ( $modal->linkedin ) : ?>
+                                <a href="<?php echo esc_url( $modal->linkedin ); ?>" target="_blank"><i class="bi bi-linkedin"></i></a>
+                            <?php endif; ?>
+                            <?php if ( $modal->twitter ) : ?>
+                                <a href="<?php echo esc_url( $modal->twitter ); ?>" target="_blank"><i class="bi bi-twitter-x"></i></a>
+                            <?php endif; ?>
+                    <?php endif; ?>
+                        </div>
                 </div>
             </div>
         </div>
