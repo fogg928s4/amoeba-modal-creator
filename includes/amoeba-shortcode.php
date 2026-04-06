@@ -69,10 +69,8 @@ class Amoeba_Shortcode {
                 <!-- Close Button -->
                 <span class="amoeba-modal-close">&times;</span>
                 <!-- Title and Socials-->
-                <div class="amoeba-modal-flex-container">
-                    
-                    <div class="amoeba-modal-text-content">
-                        <h2 class="amoeba-modal-title"><?php echo esc_html( $modal->title ); ?></h2>
+                <div class="amoeba-modal-flex-container amoeba-modal-title">
+                        <h2><?php echo esc_html( $modal->title ); ?></h2>
                         <?php if ( $modal->linkedin || $modal->twitter ) : ?>
                             <div class="amoeba-modal-socials">
                                 <?php if ( $modal->linkedin ) : ?>
@@ -84,7 +82,7 @@ class Amoeba_Shortcode {
                             </div>   
                         <?php endif; ?>
                         
-                    </div>
+
                 </div>
                 <div class="amoeba-modal-flex-container">
                     <?php if ( $modal->picture_url ) : ?>

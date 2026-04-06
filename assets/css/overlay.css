@@ -46,10 +46,6 @@
     border-radius: 4px;
 }
 
-.amoeba-modal-text-content {
-    flex: 1;
-    text-align: center;
-}
 
 .amoeba-modal-close {
     position: absolute;
@@ -61,7 +57,12 @@
     z-index: 10;
 }
 
-.amoeba-modal-title {
+.amoeba-modal-title { 
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 10px;
+}
+.amoeba-modal-title h2 {
     margin-top: 0;
     margin-bottom: 15px;
     font-size: 1.8rem;
