@@ -23,11 +23,8 @@
 }
 
 .amoeba-modal-socials {
-    display: flex;
     align-items: center;
     justify-items: center;
-    justify-content: center;
-    gap: 10px;
 }
 
 .amoeba-modal-socials  a {
@@ -36,4 +33,5 @@
     color: #00a499;
     text-decoration: none;
     font-size: 24px;
+    margin: 0px 5px;
 }

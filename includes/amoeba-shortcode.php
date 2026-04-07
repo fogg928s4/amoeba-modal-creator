@@ -68,8 +68,15 @@ class Amoeba_Shortcode {
             <div class="amoeba-modal-content">
                 <!-- Close Button -->
                 <span class="amoeba-modal-close">&times;</span>
-                <!-- Title and Socials-->
-                <div class="amoeba-modal-flex-container amoeba-modal-title">
+                <!-- Image -->
+                    <?php if ( $modal->picture_url ) : ?>
+                        <div class="amoeba-modal-image">
+                            <img src="<?php echo esc_url( $modal->picture_url ); ?>" alt="<?php echo esc_attr( $modal->title ); ?>">
+                        </div>
+                    <?php endif; ?>
+                <!-- Title and Content -->
+                <div class="amoeba-modal-container">
+                    <div class="amoeba-modal-title">
                         <h2><?php echo esc_html( $modal->title ); ?></h2>
                         <?php if ( $modal->linkedin || $modal->twitter ) : ?>
                             <div class="amoeba-modal-socials">
@@ -81,19 +88,10 @@ class Amoeba_Shortcode {
                                 <?php endif; ?>
                             </div>   
                         <?php endif; ?>
-                        
-
-                </div>
-                <div class="amoeba-modal-flex-container">
-                    <?php if ( $modal->picture_url ) : ?>
-                        <div class="amoeba-modal-image">
-                            <img src="<?php echo esc_url( $modal->picture_url ); ?>" alt="<?php echo esc_attr( $modal->title ); ?>">
-                        </div>
-                    <?php endif; ?>
+                    </div>
                     <div class="amoeba-modal-body">
                             <?php echo do_shortcode( wpautop( $modal->content ) ); ?>
                     </div>
-
                 </div>
             </div>
         </div>
